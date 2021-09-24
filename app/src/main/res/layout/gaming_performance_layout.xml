@@ -9,9 +9,10 @@
         style="@android:style/Widget.Material.SeekBar.Discrete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:progressTint="@*android:color/accent_device_default_light"
+        android:progressBackgroundTint="@*android:color/accent_device_default_light"
         android:max="6"
-        android:progress="3"
-        android:tickMark="@null" />
+        android:progress="3"/>
 
     <LinearLayout
         android:layout_width="match_parent"

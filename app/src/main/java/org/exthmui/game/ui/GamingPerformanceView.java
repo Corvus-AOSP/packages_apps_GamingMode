@@ -44,7 +44,7 @@ public class GamingPerformanceView extends LinearLayout implements SeekBar.OnSee
     public GamingPerformanceView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        LayoutInflater.from(context).inflate(R.layout.gaming_perofrmance_layout, this, true);
+        LayoutInflater.from(context).inflate(R.layout.gaming_performance_layout, this, true);
         mSeekBar = findViewById(R.id.performance_seek);
         mSeekBar.setOnSeekBarChangeListener(this);
     }
