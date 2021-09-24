@@ -27,6 +27,9 @@ import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import android.app.ActivityManager.MemoryInfo;
+import android.app.ActivityManager;
+
 import androidx.annotation.Nullable;
 
 import org.exthmui.game.R;
@@ -40,6 +43,9 @@ public class TimeAndBatteryView extends RelativeLayout {
     private TextView currentTime;
     private TextView currentDate;
     private TextView currentBattery;
+    private TextView memoryUsage;
+
+    private ActivityManager mAm;
 
     private TimeChangeReceiver timeChangeReceiver = new TimeChangeReceiver();
     private BatteryChangeReceiver batteryChangeReceiver = new BatteryChangeReceiver();
@@ -65,6 +71,7 @@ public class TimeAndBatteryView extends RelativeLayout {
         currentBattery = findViewById(R.id.current_battery);
         currentDate = findViewById(R.id.current_date);
         currentTime = findViewById(R.id.current_time);
+        memoryUsage = findViewById(R.id.tvMemory);
 
         mContext.registerReceiver(timeChangeReceiver, new IntentFilter(Intent.ACTION_TIME_TICK));
         mContext.registerReceiver(batteryChangeReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -73,12 +80,23 @@ public class TimeAndBatteryView extends RelativeLayout {
         BatteryManager batteryManager = (BatteryManager) mContext.getSystemService(BATTERY_SERVICE);
         currentBattery.setText(mContext.getString(R.string.battery_format, batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)));
 
+        mAm = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+        getMemory();
+
     }
 
     private void updateTime() {
         long sysTime = System.currentTimeMillis();
         currentDate.setText(DateFormat.format(mContext.getString(R.string.date_format), sysTime));
         currentTime.setText(DateFormat.format(mContext.getString(R.string.time_format), sysTime));
+    }
+
+    private void getMemory() {
+        MemoryInfo memInfo = new MemoryInfo();
+        mAm.getMemoryInfo(memInfo);
+        int available = (int)(memInfo.availMem / 1048576L);
+        int max = (int)(memInfo.totalMem / 1048576L);
+        memoryUsage.setText(available + "MB" + "/" + max +"MB");
     }
 
     @Override

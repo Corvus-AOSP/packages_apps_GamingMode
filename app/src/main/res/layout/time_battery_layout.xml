@@ -21,13 +21,24 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tvMemory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/current_battery"
+        android:layout_marginEnd="@dimen/time_battery_margin_horizontal"
+        android:gravity="center"
+        android:background="@drawable/ic_overlay_background"
+        android:drawableStart="@drawable/ic_memory" />
+
+    <TextView
         android:id="@+id/current_battery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_overlay_background"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:gravity="center"
+        android:background="@drawable/ic_overlay_background"
         android:drawableStart="@drawable/ic_battery_icon" />
 
 </RelativeLayout>
