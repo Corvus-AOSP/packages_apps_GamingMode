@@ -24,7 +24,7 @@ import android.os.BatteryManager;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -33,7 +33,7 @@ import org.exthmui.game.R;
 
 import static android.content.Context.BATTERY_SERVICE;
 
-public class TimeAndBatteryView extends LinearLayout {
+public class TimeAndBatteryView extends RelativeLayout {
 
     private Context mContext;
 

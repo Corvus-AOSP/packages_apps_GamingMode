@@ -12,7 +12,7 @@
     <string name="gaming_mode">Gaming Mode</string>
     <string name="date_format">d,EEEE</string>
     <string name="time_format">hh:mm aa</string>
-    <string name="battery_format">Battery: %1$d%%</string>
+    <string name="battery_format">%1$d%%</string>
 
     <string name="performance_title">Performance</string>
     <string name="performance_text_for_powersave">Powersave</string>
